@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock Paper Scissors</title>
+</head>
+<body>
+  <script>
+ 	
+    let myArray = ['Rock', 'Paper', 'Scissors'];
+
+    function computerPlay(myArray) {
+        return myArray[Math.floor(Math.random() * myArray.length)];
+        
+    }
+
+    
+        
+    function round () {
+
+        let input = prompt('Rock, Paper, Scissors?');
+
+        function capitalize(input) {
+        return input.charAt(0).toUpperCase() + input.toLowerCase().slice(1);
+        }
+
+        let playerSelection = capitalize(input);
+
+        let computerSelection = computerPlay(myArray);
+
+        let playerScore = 0;
+
+        let computerScore = 0;
+
+        let result = (playerSelection == 'Rock' && computerSelection == 'Paper') ? 'You lose! Paper beats Rock!' : (playerSelection == 'Rock' && computerSelection == 'Scissors') ? 'You win! Rock beats Scissors!' : (playerSelection == 'Paper' && computerSelection == 'Rock') ? 'You win! Paper beats Rock!' : (playerSelection == 'Paper' && computerSelection == 'Scissors') ? 'You lose! Scissors beat Paper!' : (playerSelection == 'Scissors' && computerSelection == 'Rock') ? 'You lose! Rock beats Scissors!' : (playerSelection == 'Scissors' && computerSelection == 'Paper') ? 'You win! Scissors beat Paper!' : (playerSelection == computerSelection ) ? 'Tie!' : 'Error';
+
+        console.log(result);
+    }
+
+    
+
+    function repeat (func, times) {
+        round ();
+        times && --times && repeat(func, times);
+    }
+
+    function game () {
+        repeat(round(), 4);
+    }
+    
+    console.log(game());
+
+  </script>
+</body>
+</html>
